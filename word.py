@@ -1,8 +1,18 @@
 import datetime
 import uuid
 
+from locality import locality
+
+#model of word for my own vocabulary database
+#contain id, value, language, created date and date when i must repeat it, and links to translation in different languages
+
 class Word:
+
     def __init__(self, value, language, repeat=False):
+
+        if language not in locality:
+            raise TypeError('Unknown language')
+
         self.uuid = uuid.uuid4()
         self.value = value.lower()
         self.language = language
@@ -16,6 +26,9 @@ class Word:
         self.translations = []
 
     def add_translation(self, translation, language):
+        if language not in locality:
+            raise TypeError('Unknown language')
+
         if (translation, language) not in self.translations:
             self.translations.append((translation, language))
 

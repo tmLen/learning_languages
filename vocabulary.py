@@ -1,5 +1,6 @@
 from word import Word
 
+#model for my vocabulary database 
 class Vocabulary:
     def __init__(self):
         self.my_words = {}
