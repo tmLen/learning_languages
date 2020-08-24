@@ -1,7 +1,7 @@
 import datetime
 import uuid
 
-from locality import locality
+from config import locality
 
 #model of word for my own vocabulary database
 #contain id, value, language, created date and date when i must repeat it, and links to translation in different languages
@@ -43,5 +43,10 @@ if __name__ == '__main__':
     w = Word('нога', 'ru', True)
     w.add_translation('leg', 'en')
     w.add_translation('foot', 'en')
-    w.add_translation('нога', 'ua')
+
+    try:
+        w.add_translation('нога', 'ua')
+    except TypeError:
+        print('ua is not allowed language\n')
+        
     print(w)
